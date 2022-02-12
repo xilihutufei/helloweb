@@ -1,7 +1,10 @@
 package pre.fei.util;
 
+
+import pre.fei.enums.ResultEnum;
+import pre.fei.exceptions.InitException;
+import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * @Auth puhongfei
@@ -10,9 +13,53 @@ import redis.clients.jedis.JedisPoolConfig;
  */
 public class RedisUtil {
 
-    public static void main(String[] args) {
-        JedisPoolConfig config = new JedisPoolConfig();
+    private static final String ip = "120.25.241.73";
+    private static final Integer port = 6379;
 
+    private static JedisPool jedisPool = null;
+
+    static {
+        jedisPool = new JedisPool(ip, port);
     }
+
+    private static Jedis getJedis () {
+        if (jedisPool == null){
+            throw new RuntimeException(ResultEnum.INIT_ERROR.getMsg());
+        }
+        return jedisPool.getResource();
+    }
+
+    public static void setString(String key, String value){
+        Jedis jedis = null;
+        try {
+            jedis = getJedis();
+            jedis.set(key, value);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            close(jedis);
+        }
+    }
+
+    public static String getString(String key){
+        Jedis jedis = null;
+        try {
+            jedis = getJedis();
+            return jedis.get(key);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            close(jedis);
+        }
+        return null;
+    }
+
+    private static void close(Jedis jedis){
+        if (jedis != null){
+            jedis.close();
+        }
+    }
+
+
 
 }
