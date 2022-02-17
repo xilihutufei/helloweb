@@ -29,13 +29,15 @@ public class RedisUtil {
         return jedisPool.getResource();
     }
 
-    public static void setString(String key, String value){
+    public static boolean setString(String key, String value){
         Jedis jedis = null;
         try {
             jedis = getJedis();
             jedis.set(key, value);
+            return true;
         }catch (Exception e){
             e.printStackTrace();
+            return false;
         }finally {
             close(jedis);
         }

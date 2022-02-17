@@ -1,4 +1,4 @@
-package pre.fei;
+package pre.fei.vo;
 
 public interface IConst {
 

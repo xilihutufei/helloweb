@@ -20,7 +20,7 @@ public class IndexController {
 
 
     @RequestMapping("/index")
-    public ModelAndView index(HttpServletRequest request, HttpServletResponse response){
+    public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("/pc/index.html");
         return modelAndView;

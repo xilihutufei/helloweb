@@ -1,5 +1,7 @@
 package pre.fei.vo;
 
+import pre.fei.enums.ResultEnum;
+
 /**
  * @Auth puhongfei
  * @Date 2021/12/3
@@ -39,6 +41,13 @@ public class Result {
         Result result = new Result();
         result.setCode(0);
         result.setMsg("success");
+        return result;
+    }
+
+    public static Result ofFail(ResultEnum resultEnum){
+        Result result = new Result();
+        result.setCode(resultEnum.getCode());
+        result.setMsg(resultEnum.getMsg());
         return result;
     }
 

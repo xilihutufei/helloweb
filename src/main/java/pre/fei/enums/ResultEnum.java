@@ -2,7 +2,9 @@ package pre.fei.enums;
 
 public enum  ResultEnum {
 
-    INIT_ERROR(-1, "初始化异常")
+    INIT_ERROR(-1, "初始化异常"),
+    USER_EXIST(-2, "用户名重复"),
+    SYSTEM_ERROR(-3, "系统异常"),
     ;
 
     private int code;
