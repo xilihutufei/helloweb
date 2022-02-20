@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import pre.fei.service.IUserService;
+import pre.fei.vo.IConst;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
 @Controller
-@ResponseBody
 public class FFController {
 
     @Autowired
@@ -34,13 +35,30 @@ public class FFController {
         ModelAndView modelAndView = new ModelAndView();
         String username = request.getParameter("username");
         String passwd = request.getParameter("password");
+        System.out.println("username = " + username + ", passwd = " + passwd);
         boolean login = service.login(username, passwd);
         if (login){
-            modelAndView.setViewName("/pc/demo.html");
+            Cookie cookie = new Cookie(IConst.COOKIE_USER, username);
+            response.addCookie(cookie);
+            modelAndView.setViewName("/pc/main.html");
         }else {
             modelAndView.setViewName("/pc/error.html");
         }
         return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping("/getPicByUserName")
+    public String getPicByname(HttpServletRequest request, HttpServletResponse response){
+        String name = request.getParameter("name");
+        if (name == null || name.length() == 0){
+            return "";
+        }
+        String picByUsername = service.getPicByUsername(name);
+        if (picByUsername == null){
+            return "";
+        }
+        return picByUsername;
     }
 
 }

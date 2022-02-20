@@ -11,4 +11,11 @@ public interface IUserService {
      * 注册
      */
     boolean regist(String userName, String password);
+
+    /**
+     * 获取用户图片
+     * @param name
+     * @return
+     */
+    String getPicByUsername(String name);
 }

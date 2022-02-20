@@ -13,7 +13,7 @@ import redis.clients.jedis.JedisPool;
  */
 public class RedisUtil {
 
-    private static final String ip = "120.25.241.73";
+    private static final String ip = "127.0.0.1";
     private static final Integer port = 6379;
 
     private static JedisPool jedisPool = null;

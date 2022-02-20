@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>樱花雨</title>
-<script src="js/jquery.min.js"></script>
+<script src="/pc/js/jquery.min.js"></script>
+<script src="/pc/js/ajax.js"></script>
 <style>
 html, body{
   width: 100%;
@@ -86,62 +87,62 @@ html, body{
         position: absolute;
     }
     
-    .left {
+    #left {
         transition: 1s;
         transform: translateX(-100px) rotateY(90deg);
     }
     
-    .right {
+    #right {
         transition: 1s;
         transform: translateX(100px) rotateY(90deg);
     }
     
-    .top {
+    #top {
         transition: 1s;
         transform: translateY(-100px) rotateX(90deg);
     }
     
-    .bottom {
+    #bottom {
         transition: 1s;
         transform: translateY(100px) rotateX(90deg);
     }
     
-    .after {
+    #after {
         transition: 1s;
         transform: translateZ(-100px);
     }
     
-    .befor {
+    #befor {
         transition: 1s;
         transform: translateZ(100px);
     }
     
-    .wrap .box:hover .left {
+    .wrap .box:hover #left {
         transform: translateX(-160px) rotateY(90deg);
         transition: 1s;
     }
     
-    .wrap .box:hover .right {
+    .wrap .box:hover #right {
         transition: 1s;
         transform: translateX(160px) rotateY(90deg);
     }
     
-    .wrap .box:hover .top {
+    .wrap .box:hover #top {
         transition: 1s;
         transform: translateY(-160px) rotateX(90deg);
     }
     
-    .wrap .box:hover .bottom {
+    .wrap .box:hover #bottom {
         transition: 1s;
         transform: translateY(160px) rotateX(90deg);
     }
     
-    .wrap .box:hover .after {
+    .wrap .box:hover #after {
         transform: translateZ(-160px);
         transition: 1s;
     }
     
-    .wrap .box:hover .befor {
+    .wrap .box:hover #befor {
         transform: translateZ(160px);
         transition: 1s;
     }
@@ -211,7 +212,7 @@ html, body{
 
 </style>
 </head>
-<body>
+<body  onload="onload()">
 	
 	<audio autoplay="autoplay" src="./music/可不可以-张紫豪-52876626.mp3"></audio>
 	<!-- 背景音乐 -->
@@ -219,12 +220,17 @@ html, body{
 		
 		<img src="img/cmusic.jpg" onclick="bgMusicCtrl()" style="width: 100%; height: 100%; border-radius: 10px;"/>
 	</div>
+
+	<form action="/upload" method="post" enctype="multipart/form-data">
+		<input id="file" type="file" name="file"   onchange="submitFile()"/>
+		<input type="button" value="选择文件" onclick="chooseFile()"/>
+	</form>
 	
 	
 	<!-- 图片预览 -->
-	<div id="showPic" style="width: 30%; height: 60;" >
+	<div id="showPic" style="width: 30%; height: 60%;" >
 		<div style="height: 5%; width: 100%; text-align: right;">
-			<img onclick="showPic('', 0)"  src="./img/close.png" style="margin-left: 95%; width: 15px; height: 15px;"/>
+			<img onclick="showPic('', 0)"  src="/pc/img/close.png" style="margin-left: 95%; width: 15px; height: 15px;"/>
 		</div>
 		<div style="height: 95%; width: 100%;" >
 			<img id="showPicImg" style="width: 100%; height: 100%;"/>
@@ -234,14 +240,14 @@ html, body{
 	<!-- 按钮 -->
 	<div id="buttonDiv">
 		
-		<a href="#" class="button">
+		<a href="#" class="button" title="送给你的一封信">
 			<span>我想对你说</span> 
 		</a>
 		
 		<br /><br /><br />
-		
-		<a href="#" class="button">
-			<span>我想听你说</span> 
+
+		<a href="javascript:void(0);" onclick ="chooseFile()" class="button" title="修改左边旋转图片（最多6张，多余6张取前六张）">
+			<span>上传图片</span>
 		</a>
 		
 		<br /><br /><br />
@@ -257,12 +263,12 @@ html, body{
 	<div id="jsi-cherry-container" class="container" style="width: 100%; height: 100%; ">
 		<div class="wrap">
 			<div id="box" class="box">
-				<div class="left"><img src="img/1.jpg" onclick="showPic('img/1.jpg', 1)"></div>
-				<div class="right"><img src="img/2.jpg" onclick="showPic('img/2.jpg', 1)"></div>
-				<div class="top"><img src="img/3.jpg" onclick="showPic('img/3.jpg', 1)"></div>
-				<div class="bottom"><img src="img/4.jpg" onclick="showPic('img/4.jpg', 1)"></div>
-				<div class="befor"><img src="img/5.jpg" onclick="showPic('img/5.jpg', 1)"></div>
-				<div class="after"><img src="img/6.jpg" onclick="showPic('img/6.jpg', 1)"></div>
+				<div id="left"><img id="boxImg1" src="/pc/img/2.jpg" onclick="showPic(this, 1)"></div>
+				<div id="right"><img id="boxImg2" src="/pc/img/2.jpg" onclick="showPic(this, 1)"></div>
+				<div id="top"><img id="boxImg3" src="/pc/img/2.jpg" onclick="showPic(this, 1)"></div>
+				<div id="bottom"><img id="boxImg4" src="/pc/img/2.jpg" onclick="showPic(this, 1)"></div>
+				<div id="befor"><img id="boxImg5" src="/pc/img/2.jpg" onclick="showPic(this, 1)"></div>
+				<div id="after"><img id="boxImg6" src="/pc/img/2.jpg" onclick="showPic(this, 1)"></div>
 			</div>
 		</div>
 	 </div>
@@ -483,7 +489,7 @@ $(function(){
 			var box = document.getElementById("box");
 			box.style.display = "none";
 			var showPicImg = document.getElementById("showPicImg");
-			showPicImg.setAttribute("src", pic);
+			showPicImg.setAttribute("src", pic.src);
 		}else{
 			var showPic = document.getElementById("showPic");
 			showPic.style.display = "none";
@@ -492,11 +498,123 @@ $(function(){
 		}
 		
 	}
-	
+
+
+	function onload(){
+		var userName = getCookieByName("user");
+		var pics = getPicByName(userName);
+
+	}
+
+
+	function getCookieByName(name){
+		var allcookiestr = document.cookie;
+		var cookieArr = allcookiestr.split();
+		for(var i=0; i<cookieArr.length; i++){
+			var arr = cookieArr[i].split("=");
+			if (arr[0] == name){
+				return arr[1];
+			}
+		}
+	}
+
+	function getPicByName(name){
+		var img1 = document.getElementById("boxImg1");
+		var img2 = document.getElementById("boxImg2");
+		var img3 = document.getElementById("boxImg3");
+		var img4 = document.getElementById("boxImg4");
+		var img5 = document.getElementById("boxImg5");
+		var img6 = document.getElementById("boxImg6");
+
+
+		var url = "/getPicByUserName?name=" + name;
+		var xhr = GetXHR();
+		// 定义回调函数
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4){
+				// 已经接收到全部响应数据，执行以下操作
+				data = xhr.responseText;
+				console.log(data);
+				if (data == null || data.length == 0){
+					return;
+				}
+
+				var picArr = data.split(";");
+				var len = picArr.length;
+				if (len >= 1){
+					img1.src = picArr[0];
+					img2.src = picArr[1%len];
+					img3.src = picArr[2%len];
+					img4.src = picArr[3%len];
+					img5.src = picArr[4%len];
+					img6.src = picArr[5%len];
+				}
+			}
+		};
+		xhr.open('get', url, false);
+		xhr.send();
+
+	}
+
+
+	/**
+	 *  睡眠函数
+	 *  @param numberMillis -- 要睡眠的毫秒数
+	 */
+	function sleep(numberMillis) {
+		var now = new Date();
+		var exitTime = now.getTime() + numberMillis;
+		while (true) {
+			now = new Date();
+			if (now.getTime() > exitTime)
+				return;
+		}
+	}
 	
 	
 	
 </script>
+
+
+	<script>
+		function chooseFile(){
+			var file = document.getElementById("file");
+			file.click();
+		}
+
+		function submitFile(){
+
+			var fd = new FormData();
+			var pic=document.getElementById("file").files[0];
+			if(pic == null){
+				alert("文件为空，请重新选择！！")
+				return;
+			}
+			var type=pic.type;                                              //文件类型
+
+			if(type!="image/jpeg"&&type!="image/png"){
+				alert("请上传正确格式图片");
+				return false;
+			}
+
+			var size=parseInt(pic.size)/1024/1024;             //文件大小（换算成 M）
+
+			if(size>5){
+				alert('文件过大');return false;
+			}
+
+			fd.append("file",pic);
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4){
+					alert(xhr.responseText);
+				}
+			}
+			xhr.open("POST","/upload",true);
+			xhr.send(fd);
+
+		}
+	</script>
 
 </body>
 </html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>aa</title>
+	<style type="text/css">
+		.bt1{
+			font-size: 1.5em;
+			/*font-weight: bold;*/
+		}
+		.bt2{
+			font-size: 1.3em;
+			/*font-weight: bold;*/
+		}
+	</style>
+</head>
+<body>
+	<form action="/upload" method="post" enctype="multipart/form-data">
+		<input id="file" type="file" name="file"   onchange="submitFile()"/>
+		<input type="button" value="选择文件" onclick="chooseFile()"/>
+	</form>
+</body>
+
+
+<script>
+	function chooseFile(){
+		var file = document.getElementById("file");
+		file.click();
+	}
+	
+	function submitFile(){
+
+		var fd = new FormData();
+		var pic=document.getElementById("file").files[0];
+		if(pic == null){
+			alert("文件为空，请重新选择！！")
+			return;
+		}
+		var type=pic.type;                                              //文件类型
+
+		if(type!="image/jpeg"&&type!="image/png"){
+			alert("请上传正确格式图片");
+			return false;
+		}
+
+		var size=parseInt(pic.size)/1024/1024;             //文件大小（换算成 M）
+
+		if(size>5){
+			alert('文件过大');return false;
+		}
+
+		fd.append("file",pic);
+		var xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4){
+				alert(xhr.responseText);
+			}
+		}
+		xhr.open("POST","/upload",true);
+		xhr.send(fd);
+
+	}
+</script>
+</html>
+

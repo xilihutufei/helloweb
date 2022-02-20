@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pre.fei.dao.IUserDao;
 import pre.fei.service.IUserService;
+import pre.fei.vo.IConst;
 import pre.fei.vo.Result;
 
 import java.util.Objects;
@@ -27,5 +28,10 @@ public class UserServiceImpl implements IUserService {
     @Override
     public boolean regist(String userName, String password) {
         return false;
+    }
+
+    @Override
+    public String getPicByUsername(String name) {
+        return userDao.get(IConst.PIC + name);
     }
 }

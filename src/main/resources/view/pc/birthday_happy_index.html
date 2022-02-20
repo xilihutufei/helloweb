@@ -2,12 +2,12 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>js+css3纸屑飘落生日蛋糕场景动画特效</title>
+  <title>生日快乐~~</title>
 
   <link rel="stylesheet" href="/pc/css/birthday_happy_style.css">
 
 </head>
-<body style="background-image: url(/pc/img/hua.png); background-size: 30% ; background-repeat: no-repeat;">
+<body style="background-image: url(img/hua.png); background-size: 30% ; background-repeat: no-repeat;">
 
 
 <div class="container">
@@ -58,30 +58,76 @@
   </div>
 </div>
 
-<div style="width: 20%; height: 25%; position: absolute; margin-left: 45%; justify-content: center; margin-top: 30px;">
+  <div style="width: 20%; height: 25%; position: absolute; margin-left: 45%; justify-content: center; margin-top: 30px;">
 
+    <div style="width: 100%; height: 100%">
+      <form id="loginForm"  style="width: 100%; height: 100%" action="/login" method="get" onsubmit=" return loginCheck()">
+        <div style="width: 100%; height: 20%;  ">
+          <input id="username" name="username" type="text" onfocus="onfocusName(this)" value="请输入用户名" style="width: 100%; height: 90%; border-radius: 10px;"/>
+        </div>
 
-  <div style="width: 100%; height: 20%;  ">
-    <input type="text" value="请输入用户名" style="width: 100%; height: 90%; border-radius: 10px;"/>
+        <div style="width: 100%; height: 20%; margin-top: 20%;">
+          <input id="password" name="password" type="text"  onfocus="onfocusPasswd(this)" value="密码" style="width: 100%; height: 90%; border-radius: 10px;"/>
+        </div>
+
+        <div class="buttonDiv" style="width: 40%; height: 20%; float: left; background-color: #5DC3D7; border-radius: 10px;
+		  margin-top: 40%; text-align: center; align-items: center; line-height: 40px; cursor:pointer" onclick="regist()">
+          注册
+        </div>
+        <div id="login"
+              class="buttonDiv" style="float: left; width: 40%; height: 20%; margin-top: 40%;
+		     margin-left: 60%; text-align: center;line-height: 40px; border-radius: 10px; background-color: #747AE4;">
+          <input type="submit" value="登录" style="width: 100%; height: 100%; cursor:pointer; ">
+        </div>
+      </form>
+    </div>
   </div>
 
-  <div style="width: 100%; height: 20%; margin-top: 20%;">
-    <input type="text" value="密码" style="width: 100%; height: 90%; border-radius: 10px;"/>
-  </div>
-
-  <div style="width: 40%; height: 20%; float: left; background-color: #5DC3D7; border-radius: 10px;
-		  margin-top: 40%; text-align: center; align-items: center; line-height: 40px;">
-    注册
-  </div>
-  <div style="width: 40%; height: 20%; float: left; background-color: #747AE4; margin-top: 40%;
-		 margin-left: 60%; text-align: center;line-height: 40px; border-radius: 10px;">
-    登录
-  </div>
-
-
-</div>
 
 <script  src="/pc/js/birthday_happy_script.js"></script>
+
+
+<script>
+
+  function regist(){
+    alert("暂无此功能，时间不够，技术有限，敬请期待...");
+  }
+
+
+  function loginCheck(){
+
+
+    var thisUsername = document.getElementById("username").value;
+    var thisPassword = document.getElementById("password").value;
+    if (thisUsername == null || thisUsername == ''){
+      alert("请输入用户名")
+      return false;
+    }
+    if (thisPassword == null || thisPassword == ''){
+      alert("请输入密码")
+      return false;
+    }
+
+    return true;
+  }
+
+  function onfocusName(name) {
+    if (name.value   == "请输入用户名"){
+      name.value = "";
+    }
+  }
+
+  function onfocusPasswd(passwd) {
+    if (passwd.type = "text"){
+      passwd.type = "password";
+      passwd.value = '';
+    }
+  }
+
+
+
+
+</script>
 
 </body>
 </html>
