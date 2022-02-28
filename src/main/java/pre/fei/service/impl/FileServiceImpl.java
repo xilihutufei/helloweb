@@ -3,6 +3,7 @@ package pre.fei.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import pre.fei.config.EvmConfig;
 import pre.fei.dao.IFileDao;
 import pre.fei.service.IFileService;
 import pre.fei.vo.IConst;
@@ -17,6 +18,9 @@ public class FileServiceImpl implements IFileService {
     @Autowired
     private IFileDao fileDao;
 
+    @Autowired
+    private EvmConfig config;
+
     @Override
     public Result uploadFile(String userName, MultipartFile file) {
 
@@ -28,7 +32,7 @@ public class FileServiceImpl implements IFileService {
         String filename = file.getOriginalFilename();
         String suffix = filename.substring(filename.lastIndexOf("."));
         String uuidName = UUID.randomUUID() + suffix;
-        filename = IConst.UPLOAD_PATH + uuidName;
+        filename = config.getImgPath() + uuidName;
         File dest = new File(filename);
 
         //若文件已存在则不执行保存操作
@@ -40,7 +44,7 @@ public class FileServiceImpl implements IFileService {
             return Result.ofFail("上传失败");
         }
         // 将上传的文件保存到redis中
-        fileDao.setPic(userName, IConst.SHOW_IMG_PATH+uuidName);
+        fileDao.setPic(userName, config.getShowImgPath()+uuidName);
         return Result.ofSuccess();
     }
 }

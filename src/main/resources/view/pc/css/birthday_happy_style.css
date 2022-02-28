@@ -39,7 +39,8 @@ html {
 }
 
 .container {
-  position: relative;
+	position: absolute;
+  /* position: relative; */
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import pre.fei.config.EvmConfig;
 import pre.fei.service.IUserService;
 import pre.fei.vo.IConst;
 
@@ -22,6 +23,10 @@ public class FFController {
 
     @Autowired
     IUserService service;
+
+
+    @Autowired
+    EvmConfig config;
 
     @RequestMapping("/birthday/index")
     public ModelAndView ffINdex(){

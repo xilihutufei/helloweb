@@ -1,620 +1,186 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>樱花雨</title>
-<script src="/pc/js/jquery.min.js"></script>
-<script src="/pc/js/ajax.js"></script>
-<style>
-html, body{
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-.container{
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #000000;
-}
- 
-	* {
-        margin: 0;
-        padding: 0;
-    }
-    
-    /* .wrap {
-        width: 20px;
-        height: 20px;
-    } */
-    
-    img {
-        height: 200px;
-        width: 200px;
-        opacity: 0.8;
-    }
-    
-    .box {
-          width: 200px;
-          height: 200px;
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          background-size: 100% 100%;
-          position: absolute;
-          margin-left: 28%;
-          margin-top: 18%;
-          -webkit-transform-style: preserve-3d;
-          -webkit-transform: rotateX(13deg);
-          -webkit-animation: move 10s linear infinite;
-		  display: block;
-    }
-	
-	#showPic{
-		width: 50%;
-		height: 50%;
-		/* background-size: cover;
-		background-repeat: no-repeat; */
-		/* background-attachment: fixed; */
-		background-size: 100% 100%;
-		position: absolute;
-		margin-left: 33%;
-		margin-top: 12%;
-		background-color: dimgray;
-		display: none;
-		
-	}
-	
-	#buttonDiv{
-		width: 30%;
-		height: 30%;
-		background-size: cover;
-		background-repeat: no-repeat; 
-		background-attachment: fixed;
-		background-size: 100% 100%;
-		position: absolute;
-		margin-left: 70%;
-		margin-top: 20%;
-		display: block;
-	}
-	
-	
-    
-    .box>div {
-        position: absolute;
-    }
-    
-    #left {
-        transition: 1s;
-        transform: translateX(-100px) rotateY(90deg);
-    }
-    
-    #right {
-        transition: 1s;
-        transform: translateX(100px) rotateY(90deg);
-    }
-    
-    #top {
-        transition: 1s;
-        transform: translateY(-100px) rotateX(90deg);
-    }
-    
-    #bottom {
-        transition: 1s;
-        transform: translateY(100px) rotateX(90deg);
-    }
-    
-    #after {
-        transition: 1s;
-        transform: translateZ(-100px);
-    }
-    
-    #befor {
-        transition: 1s;
-        transform: translateZ(100px);
-    }
-    
-    .wrap .box:hover #left {
-        transform: translateX(-160px) rotateY(90deg);
-        transition: 1s;
-    }
-    
-    .wrap .box:hover #right {
-        transition: 1s;
-        transform: translateX(160px) rotateY(90deg);
-    }
-    
-    .wrap .box:hover #top {
-        transition: 1s;
-        transform: translateY(-160px) rotateX(90deg);
-    }
-    
-    .wrap .box:hover #bottom {
-        transition: 1s;
-        transform: translateY(160px) rotateX(90deg);
-    }
-    
-    .wrap .box:hover #after {
-        transform: translateZ(-160px);
-        transition: 1s;
-    }
-    
-    .wrap .box:hover #befor {
-        transform: translateZ(160px);
-        transition: 1s;
-    }
-    
-	
-    @keyframes move {
-        from {
-            transform: rotateX(0deg) rotateY(0deg);
-        }
-    
-        to {
-            transform: rotateX(360deg) rotateY(360deg);
-        }
-    }
-	
-	/* 按钮 */
-	.button {
-	    background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 100%);
-	    display: inline-block;
-		padding: 3px;
-		border-radius: 7px;
-		text-decoration: none;
-		position: relative;
-	}
-	.button span {
-	    display: inline-block;
-	    background: #191919;
-		color: white;
-	    padding: 1rem 3rem;
-	    border-radius: 8px;
-	    font-size: 1rem;
-	}
-	
-	#bgmusiccorn {
-		width: 60px;
-		height: 60px;
-		color: red;
-		background-size: cover;
-		background-repeat: no-repeat; 
-		background-attachment: fixed;
-		background-size: 100% 100%;
-		position: absolute;
-		right: 0px;
-		top: 0%;
-		-webkit-transition-property: -webkit-transform;
-	   -webkit-transition-duration: 1s;
-	   -moz-transition-property: -moz-transform;
-	   -moz-transition-duration: 1s;
-	   -webkit-animation: rotate 3s linear infinite;
-	   -moz-animation: rotate 3s linear infinite;
-	   -o-animation: rotate 3s linear infinite;
-	   animation: rotate 3s linear infinite;
-	}
-	@-webkit-keyframes rotate{from{-webkit-transform: rotate(0deg)}
-	    to{-webkit-transform: rotate(360deg)}
-	}
-	@-moz-keyframes rotate{from{-moz-transform: rotate(0deg)}
-	    to{-moz-transform: rotate(359deg)}
-	}
-	@-o-keyframes rotate{from{-o-transform: rotate(0deg)}
-	    to{-o-transform: rotate(359deg)}
-	}
-	@keyframes rotate{from{transform: rotate(0deg)}
-	    to{transform: rotate(359deg)}
-	}
-	
+	<meta charset="utf-8">
+	<title>送你一片樱花雨</title>
+	<script src="/pc/js/jquery.min.js"></script>
+	<script src="/pc/js/ajax.js"></script>
+	<script src="/pc/js/luohua.js"></script>
+	<script src="/pc/js/xuanzhuan_operate.js"></script>
 
-</style>
+	<link type="text/css" href="/pc/css/xuanzhuan1.css" rel="stylesheet" />
+	<link type="text/css" href="/pc/css/xuanzhuan2.css" rel="stylesheet" />
+
+
+	<style>
+
+		/* 按钮 */
+		.button {
+			background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 100%);
+			display: inline-block;
+			padding: 3px;
+			border-radius: 7px;
+			text-decoration: none;
+			position: relative;
+		}
+		.button span {
+			display: inline-block;
+			background: #191919;
+			color: white;
+			padding: 1rem 3rem;
+			border-radius: 8px;
+			font-size: 1rem;
+		}
+
+		#bgmusiccorn {
+			width: 60px;
+			height: 60px;
+			color: red;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: 100% 100%;
+			position: absolute;
+			right: 0px;
+			top: 0%;
+			-webkit-transition-property: -webkit-transform;
+			-webkit-transition-duration: 1s;
+			-moz-transition-property: -moz-transform;
+			-moz-transition-duration: 1s;
+			-webkit-animation: rotate 3s linear infinite;
+			-moz-animation: rotate 3s linear infinite;
+			-o-animation: rotate 3s linear infinite;
+			animation: rotate 3s linear infinite;
+		}
+		@-webkit-keyframes rotate{from{-webkit-transform: rotate(0deg)}
+			to{-webkit-transform: rotate(360deg)}
+		}
+		@-moz-keyframes rotate{from{-moz-transform: rotate(0deg)}
+			to{-moz-transform: rotate(359deg)}
+		}
+		@-o-keyframes rotate{from{-o-transform: rotate(0deg)}
+			to{-o-transform: rotate(359deg)}
+		}
+		@keyframes rotate{from{transform: rotate(0deg)}
+			to{transform: rotate(359deg)}
+		}
+
+	/*	弹幕 */
+		#danmudiv{
+			position: fixed;
+			width: 100%;
+			top:0;
+			left:0;
+			/* z-index:(最高层的元素的层数+1); */
+			background-color: rgba(0,0,0,0.1);
+		}
+
+		.say{
+			visibility: hidden;
+		}
+
+	</style>
+
 </head>
-<body  onload="onload()">
-	
-	<audio autoplay="autoplay" src="./music/可不可以-张紫豪-52876626.mp3"></audio>
-	<!-- 背景音乐 -->
-	<div id="bgmusiccorn" >
-		
-		<img src="img/cmusic.jpg" onclick="bgMusicCtrl()" style="width: 100%; height: 100%; border-radius: 10px;"/>
-	</div>
+<body onload="myOnload()">
 
-	<form action="/upload" method="post" enctype="multipart/form-data">
-		<input id="file" type="file" name="file"   onchange="submitFile()"/>
-		<input type="button" value="选择文件" onclick="chooseFile()"/>
-	</form>
-	
-	
+<div id="danmudiv">
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="30"><font color="red" size="15px" >芳芳，生日快乐呀O(∩_∩)O哈哈~</font> </marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="20"><font color="aqua" size="20px">祝超级无敌漂亮可爱的霞霞生日快乐，天天开心~~</font> </marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="25"><font >天天开心，天天快乐噢</font> </marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="20"><font color="pink" size="10px">生日快乐,永远年轻，永远可爱</font> </marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="28"><font color="red">距离下一个生日还有365天~~</font> </marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="20"><font color="greenyellow" size="20px">接下来的365天也要开心喔~~</font> </marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="10"><font color="#5f9ea0" size="16px" >愿成长，落落大方，枯木逢春，不负众望</font></marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="6"><font color="pink" size="20px">二十几年前的今天，上帝派了一位天使来人间历练~~</font> </marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="9"><font color="aqua" size="20px">改革春风吹满地，新的一岁要争气 O(∩_∩)O哈哈~</font> </marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="13"><font color="#f0f8ff" size="20px">一岁一礼，一寸欢喜</font> </marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="14"><font color="#faebd7" size="20px">让我们恭喜这位幼儿园大班小朋友今日生日！</font> </marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="15"><font color="#a52a2a" size="20px">人生经验值＋1，快乐值 +10000...%</font> </marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="22"><font color="#f5f5dc" size="20px">新的一岁一定会更闪闪发光</font> </marquee>
+	<marquee  class="say" behavior="scroll" direction="left" scrollamount="9"><font color="#5f9ea0" size="20px">我们认识的第五年（好像是），祝你坚强，祝你可爱，祝你一生向前，永不回头</font> </marquee>
+
+
+</div>
+
+<audio id="musicPlayer"  autoplay="autoplay" src="/pc/music/3964038157.mp3"></audio>
+<!-- 背景音乐 -->
+<div id="bgmusiccorn" >
+	<img id="bgmusicPNG" src="/pc/img/music.png" onclick="bgMusicCtrl()" style="width: 100%; height: 100%; border-radius: 10px;"/>
+</div>
+
+
+
+
+<div id="showPic" style="width: 30%; height: 60%;" >
+	<!-- 图片预览右上角关闭按钮 -->
+	<div style="height: 5%; width: 100%; text-align: right;">
+		<img onclick="showPic('', 0, 1)"  src="/pc/img/close.png" style="margin-left: 95%; width: 15px; height: 15px;"/>
+	</div>
 	<!-- 图片预览 -->
-	<div id="showPic" style="width: 30%; height: 60%;" >
-		<div style="height: 5%; width: 100%; text-align: right;">
-			<img onclick="showPic('', 0)"  src="/pc/img/close.png" style="margin-left: 95%; width: 15px; height: 15px;"/>
-		</div>
-		<div style="height: 95%; width: 100%;" >
-			<img id="showPicImg" style="width: 100%; height: 100%;"/>
+	<div id="showPicImgDiv" style="width: 100%;" >
+<!--		<img id='showPicImg' style='width: 100%; height: 100%;' />-->
+	</div>
+	<div id="delImg" style="width: 100%; overflow:auto " >
+	</div>
+	<!-- 上传图片 -->
+	<form action="/upload" method="post" enctype="multipart/form-data" style="display: none" >
+		<input id="file" type="file" name="file"   onchange="submitFile()" style="display: none"/>
+		<input type="button" value="选择文件" onclick="chooseFile()" style="display: none" />
+	</form>
+
+</div>
+
+<!-- 按钮 -->
+<div id="buttonDiv">
+
+	<a href="javascript:void(0);" onclick ="sayYou()" class="button" title="送给你的一封信[信还没写，敬请期待]">
+		<span id="saySpan">点我试试</span>
+	</a><br /><br />
+
+	<a href="/pc/letter.html" class="button" title="送给你的一封信">
+	   <span id="saySpan">想对你说</span>
+	</a><br /><br />
+
+	<a href="javascript:void(0);" onclick ="changeStyle()" class="button" title="修改左侧相册样式(目前只有两种)">
+		<span>修改样式</span>
+	</a><br /><br />
+
+	<a href="javascript:void(0);" onclick ="chooseFile()" class="button" title="修改左边旋转图片">
+		<span>上传图片</span>
+	</a><br /><br />
+
+	<a href="javascript:void(0);" onclick ="managerPicsV2()" class="button" title="送给你的一封信">
+		<span>删除图片</span>
+	</a>
+</div>
+
+
+<div id="jsi-cherry-container" class="container1" style="width: 100%; height: 100%; ">
+	<div class="wrap1" >
+		<div id="box1" class="box1">
+			<div id="left1"><img class="boxImg" src="/2.jpg" onclick="showPicV2(this, 1, 1)"></div>
+			<div id="right1"><img class="boxImg" src="/2.jpg" onclick="showPicV2(this, 1, 1)"></div>
+			<div id="top1"><img class="boxImg" src="/2.jpg" onclick="showPicV2(this, 1, 1)"></div>
+			<div id="bottom1"><img class="boxImg" src="/2.jpg" onclick="showPicV2(this, 1, 1)"></div>
+			<div id="befor1"><img class="boxImg" src="/2.jpg" onclick="showPicV2(this, 1, 1)"></div>
+			<div id="after1"><img class="boxImg" src="/2.jpg" onclick="showPicV2(this, 1, 1)"></div>
 		</div>
 	</div>
-	
-	<!-- 按钮 -->
-	<div id="buttonDiv">
-		
-		<a href="#" class="button" title="送给你的一封信">
-			<span>我想对你说</span> 
-		</a>
-		
-		<br /><br /><br />
-
-		<a href="javascript:void(0);" onclick ="chooseFile()" class="button" title="修改左边旋转图片（最多6张，多余6张取前六张）">
-			<span>上传图片</span>
-		</a>
-		
-		<br /><br /><br />
-		
-		<a href="#" class="button">
-			<span>其&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他</span> 
-		</a>
-		
-	
-	</div>
-	
-	
-	<div id="jsi-cherry-container" class="container" style="width: 100%; height: 100%; ">
-		<div class="wrap">
-			<div id="box" class="box">
-				<div id="left"><img id="boxImg1" src="/pc/img/2.jpg" onclick="showPic(this, 1)"></div>
-				<div id="right"><img id="boxImg2" src="/pc/img/2.jpg" onclick="showPic(this, 1)"></div>
-				<div id="top"><img id="boxImg3" src="/pc/img/2.jpg" onclick="showPic(this, 1)"></div>
-				<div id="bottom"><img id="boxImg4" src="/pc/img/2.jpg" onclick="showPic(this, 1)"></div>
-				<div id="befor"><img id="boxImg5" src="/pc/img/2.jpg" onclick="showPic(this, 1)"></div>
-				<div id="after"><img id="boxImg6" src="/pc/img/2.jpg" onclick="showPic(this, 1)"></div>
-			</div>
+	<!-- <div class="content2"> -->
+	<div class="wrap1">
+		<div id="box2" class="box2">
+			<img class="boxImg" src="/pc/img/aifang1.png" alt="" onclick="showPicV2(this, 1, 2)"/>
+			<img class="boxImg" src="/pc/img/shengkuai3.png" alt="" onclick="showPicV2(this, 1, 2)"/>
+			<img class="boxImg" src="/pc/img/shengkuai6.png" alt="" onclick="showPicV2(this, 1, 2)"/>
+			<img class="boxImg" src="/pc/img/aifang1.png" alt="" onclick="showPicV2(this, 1, 2)"/>
+			<img class="boxImg" src="/pc/img/shengkuai3.png" alt="" onclick="showPicV2(this, 1, 2)"/>
+			<img class="boxImg" src="/pc/img/shengkuai6.png" alt="" onclick="showPicV2(this, 1, 2)"/>
+			<img class="boxImg" src="/pc/img/aifang1.png" alt="" onclick="showPicV2(this, 1, 2)"/>
+			<img class="boxImg" src="/pc/img/shengkuai3.png" alt="" onclick="showPicV2(this, 1, 2)"/>
+			<img class="boxImg" src="/pc/img/shengkuai6.png" alt="" onclick="showPicV2(this, 1, 2)"/>
 		</div>
-	 </div>
-	 
-	 
-	 
-
-
-
-<script>
-var RENDERER = {
-	INIT_CHERRY_BLOSSOM_COUNT : 30,
-	MAX_ADDING_INTERVAL : 10,
-	
-	init : function(){
-		this.setParameters();
-		this.reconstructMethods();
-		this.createCherries();
-		this.render();
-	},
-	setParameters : function(){
-		this.$container = $('#jsi-cherry-container');
-		this.width = this.$container.width();
-		this.height = this.$container.height();
-		this.context = $('<canvas />').attr({width : this.width, height : this.height}).appendTo(this.$container).get(0).getContext('2d');
-		this.cherries = [];
-		this.maxAddingInterval = Math.round(this.MAX_ADDING_INTERVAL * 1000 / this.width);
-		this.addingInterval = this.maxAddingInterval;
-	},
-	reconstructMethods : function(){
-		this.render = this.render.bind(this);
-	},
-	createCherries : function(){
-		for(var i = 0, length = Math.round(this.INIT_CHERRY_BLOSSOM_COUNT * this.width / 1000); i < length; i++){
-			this.cherries.push(new CHERRY_BLOSSOM(this, true));
-		}
-	},
-	render : function(){
-		requestAnimationFrame(this.render);
-		this.context.clearRect(0, 0, this.width, this.height);
-		
-		this.cherries.sort(function(cherry1, cherry2){
-			return cherry1.z - cherry2.z;
-		});
-		for(var i = this.cherries.length - 1; i >= 0; i--){
-			if(!this.cherries[i].render(this.context)){
-				this.cherries.splice(i, 1);
-			}
-		}
-		if(--this.addingInterval == 0){
-			this.addingInterval = this.maxAddingInterval;
-			this.cherries.push(new CHERRY_BLOSSOM(this, false));
-		}
-	}
-};
-var CHERRY_BLOSSOM = function(renderer, isRandom){
-	this.renderer = renderer;
-	this.init(isRandom);
-};
-CHERRY_BLOSSOM.prototype = {
-	FOCUS_POSITION : 300,
-	FAR_LIMIT : 600,
-	MAX_RIPPLE_COUNT : 100,
-	RIPPLE_RADIUS : 100,
-	SURFACE_RATE : 0.5,
-	SINK_OFFSET : 20,
-	
-	init : function(isRandom){
-		this.x = this.getRandomValue(-this.renderer.width, this.renderer.width);
-		this.y = isRandom ? this.getRandomValue(0, this.renderer.height) : this.renderer.height * 1.5;
-		this.z = this.getRandomValue(0, this.FAR_LIMIT);
-		this.vx = this.getRandomValue(-2, 2);
-		this.vy = -2;
-		this.theta = this.getRandomValue(0, Math.PI * 2);
-		this.phi = this.getRandomValue(0, Math.PI * 2);
-		this.psi = 0;
-		this.dpsi = this.getRandomValue(Math.PI / 600, Math.PI / 300);
-		this.opacity = 0;
-		this.endTheta = false;
-		this.endPhi = false;
-		this.rippleCount = 0;
-		
-		var axis = this.getAxis(),
-			theta = this.theta + Math.ceil(-(this.y + this.renderer.height * this.SURFACE_RATE) / this.vy) * Math.PI / 500;
-		theta %= Math.PI * 2;
-		
-		this.offsetY = 40 * ((theta <= Math.PI / 2 || theta >= Math.PI * 3 / 2) ? -1 : 1);
-		this.thresholdY = this.renderer.height / 2 + this.renderer.height * this.SURFACE_RATE * axis.rate;
-		this.entityColor = this.renderer.context.createRadialGradient(0, 40, 0, 0, 40, 80);
-		this.entityColor.addColorStop(0, 'hsl(330, 70%, ' + 50 * (0.3 + axis.rate) + '%)');
-		this.entityColor.addColorStop(0.05, 'hsl(330, 40%,' + 55 * (0.3 + axis.rate) + '%)');
-		this.entityColor.addColorStop(1, 'hsl(330, 20%, ' + 70 * (0.3 + axis.rate) + '%)');
-		this.shadowColor = this.renderer.context.createRadialGradient(0, 40, 0, 0, 40, 80);
-		this.shadowColor.addColorStop(0, 'hsl(330, 40%, ' + 30 * (0.3 + axis.rate) + '%)');
-		this.shadowColor.addColorStop(0.05, 'hsl(330, 40%,' + 30 * (0.3 + axis.rate) + '%)');
-		this.shadowColor.addColorStop(1, 'hsl(330, 20%, ' + 40 * (0.3 + axis.rate) + '%)');
-	},
-	getRandomValue : function(min, max){
-		return min + (max - min) * Math.random();
-	},
-	getAxis : function(){
-		var rate = this.FOCUS_POSITION / (this.z + this.FOCUS_POSITION),
-			x = this.renderer.width / 2 + this.x * rate,
-			y = this.renderer.height / 2 - this.y * rate;
-		return {rate : rate, x : x, y : y};
-	},
-	renderCherry : function(context, axis){
-		context.beginPath();
-		context.moveTo(0, 40);
-		context.bezierCurveTo(-60, 20, -10, -60, 0, -20);
-		context.bezierCurveTo(10, -60, 60, 20, 0, 40);
-		context.fill();
-		
-		for(var i = -4; i < 4; i++){
-			context.beginPath();
-			context.moveTo(0, 40);
-			context.quadraticCurveTo(i * 12, 10, i * 4, -24 + Math.abs(i) * 2);
-			context.stroke();
-		}
-	},
-	render : function(context){
-		var axis = this.getAxis();
-		
-		if(axis.y == this.thresholdY && this.rippleCount < this.MAX_RIPPLE_COUNT){
-			context.save();
-			context.lineWidth = 2;
-			context.strokeStyle = 'hsla(0, 0%, 100%, ' + (this.MAX_RIPPLE_COUNT - this.rippleCount) / this.MAX_RIPPLE_COUNT + ')';
-			context.translate(axis.x + this.offsetY * axis.rate * (this.theta <= Math.PI ? -1 : 1), axis.y);
-			context.scale(1, 0.3);
-			context.beginPath();
-			context.arc(0, 0, this.rippleCount / this.MAX_RIPPLE_COUNT * this.RIPPLE_RADIUS * axis.rate, 0, Math.PI * 2, false);
-			context.stroke();
-			context.restore();
-			this.rippleCount++;
-		}
-		if(axis.y < this.thresholdY || (!this.endTheta || !this.endPhi)){
-			if(this.y <= 0){
-				this.opacity = Math.min(this.opacity + 0.01, 1);
-			}
-			context.save();
-			context.globalAlpha = this.opacity;
-			context.fillStyle = this.shadowColor;
-			context.strokeStyle = 'hsl(330, 30%,' + 40 * (0.3 + axis.rate) + '%)';
-			context.translate(axis.x, Math.max(axis.y, this.thresholdY + this.thresholdY - axis.y));
-			context.rotate(Math.PI - this.theta);
-			context.scale(axis.rate * -Math.sin(this.phi), axis.rate);
-			context.translate(0, this.offsetY);
-			this.renderCherry(context, axis);
-			context.restore();
-		}
-		context.save();
-		context.fillStyle = this.entityColor;
-		context.strokeStyle = 'hsl(330, 40%,' + 70 * (0.3 + axis.rate) + '%)';
-		context.translate(axis.x, axis.y + Math.abs(this.SINK_OFFSET * Math.sin(this.psi) * axis.rate));
-		context.rotate(this.theta);
-		context.scale(axis.rate * Math.sin(this.phi), axis.rate);
-		context.translate(0, this.offsetY);
-		this.renderCherry(context, axis);
-		context.restore();
-		
-		if(this.y <= -this.renderer.height / 4){
-			if(!this.endTheta){
-				for(var theta = Math.PI / 2, end = Math.PI * 3 / 2; theta <= end; theta += Math.PI){
-					if(this.theta < theta && this.theta + Math.PI / 200 > theta){
-						this.theta = theta;
-						this.endTheta = true;
-						break;
-					}
-				}
-			}
-			if(!this.endPhi){
-				for(var phi = Math.PI / 8, end = Math.PI * 7 / 8; phi <= end; phi += Math.PI * 3 / 4){
-					if(this.phi < phi && this.phi + Math.PI / 200 > phi){
-						this.phi = Math.PI / 8;
-						this.endPhi = true;
-						break;
-					}
-				}
-			}
-		}
-		if(!this.endTheta){
-			if(axis.y == this.thresholdY){
-				this.theta += Math.PI / 200 * ((this.theta < Math.PI / 2 || (this.theta >= Math.PI && this.theta < Math.PI * 3 / 2)) ? 1 : -1);
-			}else{
-				this.theta += Math.PI / 500;
-			}
-			this.theta %= Math.PI * 2;
-		}
-		if(this.endPhi){
-			if(this.rippleCount == this.MAX_RIPPLE_COUNT){
-				this.psi += this.dpsi;
-				this.psi %= Math.PI * 2;
-			}
-		}else{
-			this.phi += Math.PI / ((axis.y == this.thresholdY) ? 200 : 500);
-			this.phi %= Math.PI;
-		}
-		if(this.y <= -this.renderer.height * this.SURFACE_RATE){
-			this.x += 2;
-			this.y = -this.renderer.height * this.SURFACE_RATE;
-		}else{
-			this.x += this.vx;
-			this.y += this.vy;
-		}
-		return this.z > -this.FOCUS_POSITION && this.z < this.FAR_LIMIT && this.x < this.renderer.width * 1.5;
-	}
-};
-$(function(){
-	RENDERER.init();
-});</script>
-
-
-<script>
-	function showPic(pic, type){
-		if(type == 1){
-			var showPic = document.getElementById("showPic");
-			showPic.style.display = "block";
-			var box = document.getElementById("box");
-			box.style.display = "none";
-			var showPicImg = document.getElementById("showPicImg");
-			showPicImg.setAttribute("src", pic.src);
-		}else{
-			var showPic = document.getElementById("showPic");
-			showPic.style.display = "none";
-			var box = document.getElementById("box");
-			box.style.display = "block";
-		}
-		
-	}
-
-
-	function onload(){
-		var userName = getCookieByName("user");
-		var pics = getPicByName(userName);
-
-	}
-
-
-	function getCookieByName(name){
-		var allcookiestr = document.cookie;
-		var cookieArr = allcookiestr.split();
-		for(var i=0; i<cookieArr.length; i++){
-			var arr = cookieArr[i].split("=");
-			if (arr[0] == name){
-				return arr[1];
-			}
-		}
-	}
-
-	function getPicByName(name){
-		var img1 = document.getElementById("boxImg1");
-		var img2 = document.getElementById("boxImg2");
-		var img3 = document.getElementById("boxImg3");
-		var img4 = document.getElementById("boxImg4");
-		var img5 = document.getElementById("boxImg5");
-		var img6 = document.getElementById("boxImg6");
-
-
-		var url = "/getPicByUserName?name=" + name;
-		var xhr = GetXHR();
-		// 定义回调函数
-		xhr.onreadystatechange = function(){
-			if(xhr.readyState == 4){
-				// 已经接收到全部响应数据，执行以下操作
-				data = xhr.responseText;
-				console.log(data);
-				if (data == null || data.length == 0){
-					return;
-				}
-
-				var picArr = data.split(";");
-				var len = picArr.length;
-				if (len >= 1){
-					img1.src = picArr[0];
-					img2.src = picArr[1%len];
-					img3.src = picArr[2%len];
-					img4.src = picArr[3%len];
-					img5.src = picArr[4%len];
-					img6.src = picArr[5%len];
-				}
-			}
-		};
-		xhr.open('get', url, false);
-		xhr.send();
-
-	}
-
-
-	/**
-	 *  睡眠函数
-	 *  @param numberMillis -- 要睡眠的毫秒数
-	 */
-	function sleep(numberMillis) {
-		var now = new Date();
-		var exitTime = now.getTime() + numberMillis;
-		while (true) {
-			now = new Date();
-			if (now.getTime() > exitTime)
-				return;
-		}
-	}
-	
-	
-	
-</script>
-
-
-	<script>
-		function chooseFile(){
-			var file = document.getElementById("file");
-			file.click();
-		}
-
-		function submitFile(){
-
-			var fd = new FormData();
-			var pic=document.getElementById("file").files[0];
-			if(pic == null){
-				alert("文件为空，请重新选择！！")
-				return;
-			}
-			var type=pic.type;                                              //文件类型
-
-			if(type!="image/jpeg"&&type!="image/png"){
-				alert("请上传正确格式图片");
-				return false;
-			}
-
-			var size=parseInt(pic.size)/1024/1024;             //文件大小（换算成 M）
-
-			if(size>5){
-				alert('文件过大');return false;
-			}
-
-			fd.append("file",pic);
-			var xhr=new XMLHttpRequest();
-			xhr.onreadystatechange=function(){
-				if(xhr.readyState==4){
-					alert(xhr.responseText);
-				}
-			}
-			xhr.open("POST","/upload",true);
-			xhr.send(fd);
-
-		}
-	</script>
-
+	</div>
+</div>
 </body>
 </html>

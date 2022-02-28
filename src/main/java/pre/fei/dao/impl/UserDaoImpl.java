@@ -1,5 +1,7 @@
 package pre.fei.dao.impl;
 
+import com.google.gson.internal.$Gson$Preconditions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import pre.fei.dao.IUserDao;
 import pre.fei.enums.ResultEnum;
@@ -11,14 +13,17 @@ import pre.fei.vo.Result;
 @Repository
 public class UserDaoImpl implements IUserDao {
 
+    @Autowired
+    RedisUtil redisUtil;
+
     @Override
     public Result addUser(String userName, String password) {
 
-        String string = RedisUtil.getString(userName);
+        String string = redisUtil.getString(userName);
         if (string != null && string.length() > 0){
             return Result.ofFail(ResultEnum.USER_EXIST);
         }
-        if (RedisUtil.setString(userName, password)) {
+        if (redisUtil.setString(userName, password)) {
             return Result.ofSuccess();
         }
         return Result.ofFail(ResultEnum.SYSTEM_ERROR);
@@ -32,7 +37,7 @@ public class UserDaoImpl implements IUserDao {
 
     @Override
     public String get(String userName) {
-        return RedisUtil.getString(userName);
+        return redisUtil.getString(userName);
     }
 
     @Override

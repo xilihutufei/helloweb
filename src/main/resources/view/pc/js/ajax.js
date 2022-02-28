@@ -35,11 +35,14 @@
 	            xhr.onreadystatechange = function(){
 	                if(xhr.readyState == 4){
 	                    // 已经接收到全部响应数据，执行以下操作
-	                    data = xhr.responseText;
-						alert("获取响应：" + data)
-
+	                    var data = xhr.responseText;
+	                    alert(data);
 	                }
 	            };
-	            xhr.open('get', url, false);
+	            // 指定连接方式和地址----文件方式
+	            xhr.open('get', url, true);
+	            // 发送请求
 	            xhr.send();
 	        }
+	
+	    

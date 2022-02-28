@@ -1,8 +1,8 @@
 package pre.fei.dao.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import pre.fei.dao.IFileDao;
-import pre.fei.util.ParamUtil;
 import pre.fei.util.RedisUtil;
 import pre.fei.vo.IConst;
 import pre.fei.vo.Result;
@@ -10,6 +10,9 @@ import pre.fei.vo.Result;
 
 @Repository
 public class FileDaoImpl implements IFileDao {
+
+    @Autowired
+    RedisUtil redisUtil;
 
     @Override
     public Result setPic(String userName, String pic) {
@@ -19,16 +22,16 @@ public class FileDaoImpl implements IFileDao {
         }
         String oldPic = getPic(userName);
         if (oldPic == null || oldPic.length() == 0){
-            RedisUtil.setString(getPicKey(userName), pic);
+            redisUtil.setString(getPicKey(userName), pic);
         }else {
-            RedisUtil.setString(getPicKey(userName), pic + ";" + oldPic);
+            redisUtil.setString(getPicKey(userName), pic + ";" + oldPic);
         }
         return Result.ofSuccess();
     }
 
     @Override
     public String getPic(String userName) {
-        return RedisUtil.getString(getPicKey(userName));
+        return redisUtil.getString(getPicKey(userName));
     }
 
 
